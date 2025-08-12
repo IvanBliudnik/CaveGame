@@ -4,7 +4,7 @@ let gold = 50;
 let currentWeapon = 0;
 let fighting;
 let monsterHealth;
-let inventory = ["stick"];
+let inventory = ["кулаки"];
 
 const button1 = document.querySelector('#button1');
 const button2 = document.querySelector("#button2");
@@ -17,49 +17,49 @@ const monsterStats = document.querySelector("#monsterStats");
 const monsterName = document.querySelector("#monsterName");
 const monsterHealthText = document.querySelector("#monsterHealth");
 const weapons = [
-  { name: 'stick', power: 5 },
-  { name: 'dagger', power: 30 },
-  { name: 'claw hammer', power: 50 },
-  { name: 'sword', power: 100 }
+  { name: 'палка', power: 5 },
+  { name: 'клюшка для хоккея на траве', power: 30 },
+  { name: 'топор', power: 50 },
+  { name: 'Desert Eagle cal.50', power: 100 }
 ];
 const monsters = [
   {
-    name: "slime",
+    name: "урка",
     level: 2,
     health: 15
   },
   {
-    name: "fanged beast",
+    name: "мафиози",
     level: 8,
     health: 60
   },
   {
-    name: "dragon",
+    name: "Босс",
     level: 20,
     health: 300
   }
 ]
 const locations = [
   {
-    name: "town square",
-    "button text": ["Go to store", "Go to cave", "Fight dragon"],
+    name: "Городская площадь",
+    "button text": ["Пойти на рынок", "Логово", "Решить проблему с Боссом"],
     "button functions": [goStore, goCave, fightDragon],
-    text: "You are in the town square. You see a sign that says \"Store\"."
+    text: "Вы находитесь на центральной площади. Внутренний голос говорит: ты справишься \"Store\"."
   },
   {
-    name: "store",
+    name: "Рынок",
     "button text": ["Buy 10 health (10 gold)", "Buy weapon (30 gold)", "Go to town square"],
     "button functions": [buyHealth, buyWeapon, goTown],
     text: "You enter the store."
   },
   {
-    name: "cave",
+    name: "Логово",
     "button text": ["Fight slime", "Fight fanged beast", "Go to town square"],
     "button functions": [fightSlime, fightBeast, goTown],
     text: "You enter the cave. You see some monsters."
   },
   {
-    name: "fight",
+    name: "Драка",
     "button text": ["Attack", "Dodge", "Run"],
     "button functions": [attack, dodge, goTown],
     text: "You are fighting a monster."
