@@ -17,19 +17,19 @@ const monsterStats = document.querySelector("#monsterStats");
 const monsterName = document.querySelector("#monsterName");
 const monsterHealthText = document.querySelector("#monsterHealth");
 const weapons = [
-  { name: 'палка', power: 5 },
+  { name: 'кулаки', power: 5 },
   { name: 'клюшка для хоккея на траве', power: 30 },
   { name: 'топор', power: 50 },
   { name: 'Desert Eagle cal.50', power: 100 }
 ];
 const monsters = [
   {
-    name: "урка",
+    name: "Урка",
     level: 2,
     health: 15
   },
   {
-    name: "мафиози",
+    name: "Мафиози",
     level: 8,
     health: 60
   },
@@ -44,49 +44,49 @@ const locations = [
     name: "Городская площадь",
     "button text": ["Пойти на рынок", "Логово", "Решить проблему с Боссом"],
     "button functions": [goStore, goCave, fightDragon],
-    text: "Вы находитесь на центральной площади. Внутренний голос говорит: ты справишься \"Store\"."
+    text: "Вы находитесь на центральной площади. Что будешь делать?."
   },
   {
     name: "Рынок",
-    "button text": ["Buy 10 health (10 gold)", "Buy weapon (30 gold)", "Go to town square"],
+    "button text": ["Купить 10 едениц здоровья (10 gold)", "Купить оружие (30 gold)", "Вернуться на площадь"],
     "button functions": [buyHealth, buyWeapon, goTown],
-    text: "You enter the store."
+    text: "Вы находитесь в магазине."
   },
   {
     name: "Логово",
-    "button text": ["Fight slime", "Fight fanged beast", "Go to town square"],
+    "button text": ["Драка с Уркой", "Драка с Мафиози", "Вернуться на площадь"],
     "button functions": [fightSlime, fightBeast, goTown],
-    text: "You enter the cave. You see some monsters."
+    text: "Вы в логове. Тут повсюду опасность"
   },
   {
     name: "Драка",
-    "button text": ["Attack", "Dodge", "Run"],
+    "button text": ["Атаковать", "Увернуться", "Убежать"],
     "button functions": [attack, dodge, goTown],
-    text: "You are fighting a monster."
+    text: "Вы деретесь с противником"
   },
   {
-    name: "kill monster",
-    "button text": ["Go to town square", "Go to town square", "Go to town square"],
-    "button functions": [goTown, goTown, goTown],
-    text: 'The monster screams "Arg!" as it dies. You gain experience points and find gold.'
+    name: "Победил",
+    "button text": ["На центральную площадь", "На центральную площадь", "На центральную площадь"],
+    "button functions": [goTown, goTown, easterEgg],
+    text: 'Оппонент что-то крякнул. Ты заработал опыт и немного денег'
   },
   {
-    name: "lose",
-    "button text": ["REPLAY?", "REPLAY?", "REPLAY?"],
+    name: "Wasted",
+    "button text": ["Повторить?"],
     "button functions": [restart, restart, restart],
     text: "You die. ☠️"
   },
   { 
-    name: "win", 
-    "button text": ["REPLAY?", "REPLAY?", "REPLAY?"], 
+    name: "Победа",
+    "button text": ["REPLAY?"],
     "button functions": [restart, restart, restart], 
-    text: "You defeat the dragon! YOU WIN THE GAME! 🎉" 
+    text: "Ты решил проблему мирных жителей! Ты выиграл игру, теперь ты Босс! 🎉"
   },
   {
-    name: "easter egg",
-    "button text": ["2", "8", "Go to town square?"],
-    "button functions": [pickTwo, pickEight, goTown],
-    text: "You find a secret game. Pick a number above. Ten numbers will be randomly chosen between 0 and 10. If the number you choose matches one of the random numbers, you win!"
+    name: "Лотерея",
+    "button text": ["2", "8", "3", "Go to town square?"],
+    "button functions": [pickTwo, pickEight, pickThree, goTown],
+    text: "Вы нашли секретную игру. Выберите число выше. Будет случайным образом выбрано десять чисел в диапазоне от 0 до 10. Если выбранное вами число совпадает с одним из случайных чисел, вы выигрываете!"
   }
 ];
 
@@ -258,6 +258,9 @@ function pickTwo() {
 
 function pickEight() {
   pick(8);
+}
+function pickThree() {
+  pick(3);
 }
 
 function pick(guess) {
