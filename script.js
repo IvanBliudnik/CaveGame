@@ -20,7 +20,7 @@ const weapons = [
   { name: 'кулаки', power: 5 },
   { name: 'клюшка для хоккея на траве', power: 30 },
   { name: 'топор', power: 50 },
-  { name: 'Desert Eagle cal.50', power: 100 }
+  { name: 'дробовик', power: 100 }
 ];
 const monsters = [
   {
@@ -56,7 +56,7 @@ const locations = [
     name: "Логово",
     "button text": ["Драка с Уркой", "Драка с Мафиози", "Вернуться на площадь"],
     "button functions": [fightSlime, fightBeast, goTown],
-    text: "Вы в логове. Тут повсюду опасность"
+    text: "Вы в логове. Тут повсюду урки"
   },
   {
     name: "Драка",
@@ -68,24 +68,24 @@ const locations = [
     name: "Победил",
     "button text": ["На центральную площадь", "На центральную площадь", "На центральную площадь"],
     "button functions": [goTown, goTown, easterEgg],
-    text: 'Оппонент что-то крякнул. Ты заработал опыт и немного денег'
+    text: 'Оппонент что-то крякнул. Ты его победил, заработал опыт и немного денег'
   },
   {
     name: "Wasted",
-    "button text": ["Повторить?"],
-    "button functions": [restart, restart, restart],
+    "button text": ["Повторить?", "Повторить?", "Повторить?"],
+    "button functions": [easterEgg, restart, restart],
     text: "You die. ☠️"
   },
   { 
     name: "Победа",
     "button text": ["REPLAY?"],
-    "button functions": [restart, restart, restart], 
+    "button functions": [restart, easterEgg, restart],
     text: "Ты решил проблему мирных жителей! Ты выиграл игру, теперь ты Босс! 🎉"
   },
   {
     name: "Лотерея",
     "button text": ["2", "8", "3", "Go to town square?"],
-    "button functions": [pickTwo, pickEight, pickThree, goTown],
+    "button functions": [pickTwo, pickEight, goTown],
     text: "Вы нашли секретную игру. Выберите число выше. Будет случайным образом выбрано десять чисел в диапазоне от 0 до 10. Если выбранное вами число совпадает с одним из случайных чисел, вы выигрываете!"
   }
 ];
@@ -125,7 +125,7 @@ function buyHealth() {
     goldText.innerText = gold;
     healthText.innerText = health;
   } else {
-    text.innerText = "You do not have enough gold to buy health.";
+    text.innerText = "У тебя не хватает денег на мед. препараты";
   }
 }
 
@@ -143,8 +143,8 @@ function buyWeapon() {
       text.innerText = "You do not have enough gold to buy a weapon.";
     }
   } else {
-    text.innerText = "You already have the most powerful weapon!";
-    button2.innerText = "Sell weapon for 15 gold";
+    text.innerText = "Ты владеешь " + currentWeapon + "тебе нечего предложить";
+    button2.innerText = "Продать оружие за 15 золотых";
     button2.onclick = sellWeapon;
   }
 }
